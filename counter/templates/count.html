@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visit Stats</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/index.css') }}"
+    />
+  </head>
+  <body>
+    <main>
+      <div class="about-container">
+        <h2>Visit Stats</h2>
+        <p>This page has been viewed {{ visit_count }} times.</p>
+        <div class="bottom-buttons">
+          <button class="home-btn" onclick="location.href='/'">Home</button>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
