@@ -125,15 +125,11 @@ volumes:
 
 A service in Docker Compose tells Docker how to run a specific container, based on an image, including configurations like ports, volumes, environment variables and dependencies on other services. The services in the `docker-compose.yml` file above are web, redis and nginx.
 
-<br>
-
 ### Redis
 
 For Redis to remember and have persistent storage, a volume is used as shown in the docker-compose.yml file. A volume's content exists outside the lifecycle of a given container. When a container is destroyed, the writable layer is destroyed with it. Using a volume ensures that the data is persisted even if the container using it is removed.
 
 The named volume `redis-data` is mounted to the `/data` path inside the Redis service's container, as you can see in the code of the docker-compose.yml file:
-
-<br>
 
 ```
   redis:
@@ -144,11 +140,7 @@ The named volume `redis-data` is mounted to the `/data` path inside the Redis se
       - redis-data:/data
 ```
 
-<br>
-<br>
 At the bottom of the docker-compose.yml file, the named volume is declared/defined as the following:
-
-<br>
 
 ```
   volumes:
@@ -160,8 +152,6 @@ At the bottom of the docker-compose.yml file, the named volume is declared/defin
 
 Hard-coding connection details is not ideal. As you can see in the code of part of the `count.py` below, the Redis connection details are being read from environment variables. Using environment variables adds flexibility, as you can change configurations in the `docker-compose.yml` file without modifying the application code in `count.py`.
 
-<br>
-
 ```
 
 redis_host = os.getenv('REDIS_HOST', 'redis')
@@ -169,9 +159,6 @@ redis_port = int(os.getenv('REDIS_PORT', 6379))
 r = redis.Redis(host=redis_host, port=redis_port)
 
 ```
-
-<br>
-<br>
 
 ### Nginx
 
@@ -182,9 +169,6 @@ Docker Compose maps port 5002 of the Nginx container to port 5002 of the host ma
 
 When you access `http://localhost:5002` on your host, you're reaching port 5002 inside the Nginx container — which then proxies requests to your Flask app (running in the web service).
 
-<br>
-<br>
-
 ```
 
   nginx:
@@ -193,21 +177,16 @@ When you access `http://localhost:5002` on your host, you're reaching port 5002 
       - "5002:5002"
 ```
 
-<br>
-<br>
 ---
 
 ## Set up
 
 #### (if you would like to make this app work on your laptop)
 
-<br>
-
 1. Use the following command in the terminal to clone this repository.
 
 `git clone  https://github.com/SOMHOLUK/docker-counter-project.git`
 
-<br>
 <br>
 
 Navigate into the counter directory using the following command:
@@ -215,73 +194,49 @@ Navigate into the counter directory using the following command:
 `cd docker-counter-project/counter`
 
 <br>
-<br>
 
 2. [**Download and install**](https://docs.docker.com/get-started/get-docker/) Docker Desktop
 
-## <br>
-
-<br>
+---
 
 ### Deploy with Docker Compose
-
-<br>
 
 1. Use the following command to start the application:
 
 ` docker-compose up --scale web=3 --build`
 
-<br>
-
 2. When you run this command you should see output similar to the following:
-
-<br>
-<br>
 
 ![Docker Compose Screenshot](images/docker-compose-pic.png)
 
-## <br>
-
-<br>
+---
 
 ## Testing the app
-
-<br>
 
 This flask app that has two routes:
 
 `/`: Displays the following welcome message: `Welcome to the VisitCounter`
 `/count`: Increments and displays a visit count stored in Redis.
-<br>
 
 After the application starts, navigate to `http://localhost:5002` and
 `http://localhost:5002/count` in your web browser.
 
-## <br>
+---
 
-<br>
 ![Counter App Screenshot 1](images/counter-app-1.png)
-<br>
+
 ---
-<br>
+
 ![Counter App Screenshot 2](images/counter-app-2.png)
-<br>
+
 ---
-<br>
 
 ## Tear down the containers
-
-<br>
 
 Use the following command to tear down the containers:
 
 `docker-compose down`
-<br>
-
----
 
 ## Documentation resources
-
-<br>
 
 - [Docker Documentation](https://docs.docker.com/) - Official Docker documentation
