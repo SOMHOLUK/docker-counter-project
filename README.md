@@ -19,8 +19,6 @@ For scalability, the Flask service is run in multiple instances, with NGINX acti
 
 ---
 
----
-
 ## 📁 Docker Counter Project Structure
 
 ```
@@ -183,15 +181,19 @@ When you access `http://localhost:5002` on your host, you're reaching port 5002 
 
 ## Set up
 
-### (if you would like to make this app work on your laptop)
+#### (if you would like to make this app work on your laptop)
 
 1. Use the following command in the terminal to clone this repository.
 
 `git clone  https://github.com/SOMHOLUK/docker-counter-project.git`
 
+<br>
+
 Navigate into the counter directory using the following command:
 
 `cd docker-counter-project/counter`
+
+<br>
 
 2. [**Download and install**](https://docs.docker.com/get-started/get-docker/) Docker Desktop
 
