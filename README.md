@@ -237,6 +237,8 @@ Use the following command to tear down the containers:
 
 `docker-compose down`
 
+---
+
 ## Documentation resources
 
 - [Docker Documentation](https://docs.docker.com/) - Official Docker documentation
