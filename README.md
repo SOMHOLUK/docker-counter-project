@@ -1,4 +1,4 @@
-# Multi-Container Application
+# A counter web application using Flask + Redis + NGINX
 
 ## 📄 Project Description
 
@@ -7,6 +7,17 @@ This is a multi-container web application built with Python Flask and Redis, man
 The Flask application reads Redis connection details (host and port) from environment variables, promoting flexibility and easier configuration across environments without modifying source code.
 
 For scalability, the Flask service is run in multiple instances, with NGINX acting as a reverse proxy to load balance traffic between them.
+
+---
+
+## 🛠️ Technologies Used
+
+- Python (Flask)
+- Redis
+- NGINX
+- Docker & Docker Compose
+
+---
 
 ---
 
@@ -60,7 +71,7 @@ A container image contains everything you need to run a container such as files,
 
 However, the Redis service used the official Redis image from Docker Hub, Redis:latest.
 
-Furthermore, the NGINX service used the NGINX:latest image from Docker Hub.
+Furthermore, the NGINX service used the official NGINX:latest image from Docker Hub.
 
 ### Containers
 
@@ -114,13 +125,13 @@ You outline which images to use or build, the ports, the volumes and how these c
 
 ### Services
 
-A service in Docker Compose (in the `docker-compose.yml` file above the services would be web, redis and nginx) tells Docker how to run a specific container, based on an image, including configurations like ports, volumes, environment variables and dependencies on other services.
+A service in Docker Compose tells Docker how to run a specific container, based on an image, including configurations like ports, volumes, environment variables and dependencies on other services. The services in the `docker-compose.yml` file above are web, redis and nginx.
 
 ### Redis
 
 For Redis to remember and have persistent storage, a volume is used as shown in the docker-compose.yml file. A volume's content exists outside the lifecycle of a given container. When a container is destroyed, the writable layer is destroyed with it. Using a volume ensures that the data is persisted even if the container using it is removed.
 
-The named volume redis-data is mounted to the `/data` path inside the Redis service's container, as you can see in the code of the docker-compose.yml file:
+The named volume `redis-data` is mounted to the `/data` path inside the Redis service's container, as you can see in the code of the docker-compose.yml file:
 
 ```
   redis:
@@ -141,7 +152,7 @@ At the bottom of the docker-compose.yml file, the named volume is declared/defin
 
 ### Environment variables
 
-Hard-coding connection details is not ideal. As you can see in the code of part of the `county.py` below, the Redis connection details are being read from environment variables. Using environment variables adds flexibility, as you can change configurations in the `docker-compose.yml` file without modifying the application code in `count.py`.
+Hard-coding connection details is not ideal. As you can see in the code of part of the `count.py` below, the Redis connection details are being read from environment variables. Using environment variables adds flexibility, as you can change configurations in the `docker-compose.yml` file without modifying the application code in `count.py`.
 
 ```
 
@@ -156,15 +167,21 @@ r = redis.Redis(host=redis_host, port=redis_port)
 A common use of the Nginx reverse proxy is to provide load balancing.
 As this application is running locally, the impact of the NGINX load balancer isn't very noticeable. However, in a production environment handling millions of daily requests, a setup like this becomes crucial. Distributing traffic across multiple instances helps the application scale effectively and remain reliable under heavy load.
 
-### Port
-
 Docker Compose maps port 5002 of the Nginx container to port 5002 of the host machine.
 
-When you access http://localhost:5002 on your host, you're reaching port 5002 inside the Nginx container — which then proxies requests to your Flask app (running in the web service).
+When you access `http://localhost:5002` on your host, you're reaching port 5002 inside the Nginx container — which then proxies requests to your Flask app (running in the web service).
+
+```
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "5002:5002"
+```
 
 ---
 
-# Set up
+# Set up (if you would like to make this app work on your laptop)
 
 1. Use the following command in the terminal to clone this repository.
 
@@ -192,15 +209,21 @@ Navigate into the counter directory using the following command:
 
 # Testing the app
 
-After the application starts, navigate to `http://localhost:5002` and
-`http://localhost:5002/count` in your web browser:
-
 This flask app that has two routes:
 
 `/`: Displays the following welcome message: `Welcome to the VisitCounter`
 `/count`: Increments and displays a visit count stored in Redis.
 
-📹 [Watch demo video](videos/counter-app-video.mp4)
+After the application starts, navigate to `http://localhost:5002` and
+`http://localhost:5002/count` in your web browser.
+
+---
+
+![Counter App Screenshot 1](images/counter-app-1.png)
+
+---
+
+![Counter App Screenshot 2](images/counter-app-2.png)
 
 ---
 
@@ -209,3 +232,7 @@ This flask app that has two routes:
 Use the following command to tear down the containers:
 
 `docker-compose down`
+
+### Documentation resources
+
+- [Docker Documentation](https://docs.docker.com/) - Official Docker documentation
