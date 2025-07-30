@@ -1,8 +1,8 @@
-# A counter web application using Flask + Redis + NGINX
+# VisitCounter App with Flask, Redis and NGINX (dockerised)
 
 ## 📄 Project Description
 
-This is a multi-container web application built with Python Flask and Redis, managed using Docker Compose. The Flask app tracks page visits and stores the count in Redis. To ensure data persists even when the Redis container is stopped or removed, a Docker volume is mounted to Redis.
+This is a multi-container web application built with Python Flask and Redis and defined and run by Docker Compose. The Flask app tracks page visits and stores the count in Redis. To ensure data persists even when the Redis container is stopped or removed, a Docker volume is mounted to Redis.
 
 The Flask application reads Redis connection details (host and port) from environment variables, promoting flexibility and easier configuration across environments without modifying source code.
 
