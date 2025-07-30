@@ -190,6 +190,8 @@ Navigate into the counter directory using the following command:
 
 📹 [Watch demo video](videos/docker-build.mp4)
 
+[Watch the video here](https://drive.google.com/file/d/10SnUEiw5v3yggDZMhWaTFnIO1zVVoM8t/view?usp=sharing) 
+
 C:\Users\Filsan Mohamed\Desktop\counter-project\docker-counter-project\counter\videos\docker-build.mp4
 
 ---
