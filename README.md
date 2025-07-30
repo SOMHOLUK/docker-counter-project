@@ -79,7 +79,13 @@ Containers are isolated processes for each of your app's components. In this pro
 
 ---
 
-# Docker-compose.yml file
+# Docker Compose
+
+Docker Compose simplifies the development process but also ensures consistency across environments.
+With Docker Compose you define your multi-container setup in a single yaml (yml) file.
+You outline which images to use or build, the ports, the volumes and how these containers should talk to one and another. Configurations for services are defined in a yaml file.
+
+### Docker-compose.yml file
 
 ```
 version: "3.8"
@@ -116,12 +122,6 @@ volumes:
 
 
 ```
-
-## Docker Compose
-
-Docker Compose simplifies the development process but also ensures consistency across environments.
-With Docker Compose you define your multi-container setup in a single yaml (yml) file.
-You outline which images to use or build, the ports, the volumes and how these containers should talk to one and another. Configurations for services are defined in a yaml file.
 
 ### Services
 
