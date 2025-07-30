@@ -59,7 +59,7 @@ docker-counter-project/
 
 ---
 
-# Dockerfile, images and containers
+## Dockerfile, images and containers
 
 ### Dockerfile
 
@@ -79,7 +79,7 @@ Containers are isolated processes for each of your app's components. In this pro
 
 ---
 
-# Docker Compose
+## Docker Compose
 
 Docker Compose simplifies the development process but also ensures consistency across environments.
 With Docker Compose you define your multi-container setup in a single yaml (yml) file.
@@ -181,9 +181,9 @@ When you access `http://localhost:5002` on your host, you're reaching port 5002 
 
 ---
 
-# Set up
+## Set up
 
-## (if you would like to make this app work on your laptop)
+### (if you would like to make this app work on your laptop)
 
 1. Use the following command in the terminal to clone this repository.
 
@@ -197,7 +197,7 @@ Navigate into the counter directory using the following command:
 
 ---
 
-## Deploy with Docker Compose
+### Deploy with Docker Compose
 
 1. Use the following command to start the application:
 
@@ -209,7 +209,7 @@ Navigate into the counter directory using the following command:
 
 ---
 
-# Testing the app
+## Testing the app
 
 This flask app that has two routes:
 
@@ -229,12 +229,12 @@ After the application starts, navigate to `http://localhost:5002` and
 
 ---
 
-# Tear down the containers
+## Tear down the containers
 
 Use the following command to tear down the containers:
 
 `docker-compose down`
 
-# Documentation resources
+## Documentation resources
 
 - [Docker Documentation](https://docs.docker.com/) - Official Docker documentation
